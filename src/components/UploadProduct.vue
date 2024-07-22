@@ -15,7 +15,7 @@
         </div> <br>
         <div class="row">
             <div class="col-lg-9  my-1  py-1">
-                <input type="text" placeholder="Search Product By Name" class="form-control" @change="searchFunction" v-model="searchkeyword">
+                <input type="text" placeholder="Search Product By Name" class="form-control" @keyup="searchFunction" v-model="searchkeyword">
             </div>
             <div class="col-lg-2">
                 <button @click="searchFunction" class="btn btn-lg btn-success"> Search </button>
@@ -402,8 +402,9 @@ export default {
     searchFunction(){
          this.searchArray= this.myArray.filter((u)=>(((u.productName).toLowerCase()).match((this.searchkeyword).toLowerCase())))
          this.showFilter();
-         this.searchkeyword="";
+
          if(!this.searchkeyword){
+            this.searchkeyword="";
             this.reload();
          }
     },
